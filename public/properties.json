@@ -16,8 +16,8 @@
   },
   {
     "id": 5769,
-    "title": "NW Austin Room",
-    "city_name": "Austin",
+    "title": "NW Boston Room",
+    "city_name": "Boston",
     "description": "Treehouse hosted by Hackberry Creek Getaways",
     "room_type": "Private room",
     "nightly_fee": 694,
@@ -27,7 +27,7 @@
     "minimum_nights": 4,
     "rating": 4.5,
     "amenities": "pool, AC, Heater, Theatre, Sauna",
-    "images": ["image1_home.jpg","image1_room.jpg","image1_bath.jpg","image1_pool.jpg"]
+    "images": ["image2_1.png","image2_2.png","image2_3.png","image2_4.png"]
   },
   {
     "id": 662245,
@@ -41,7 +41,7 @@
     "bedrooms": 4,
     "minimum_nights": 4,
     "amenities": "pool, AC, Heater, Theatre, Sauna",
-    "images": ["image1_home.jpg","image1_room.jpg","image1_bath.jpg","image1_pool.jpg"]
+    "images": ["image3_1.png","image3_2.png","image3_3.png","image3_4.png"]
   },
   {
     "id": 322834,
@@ -55,6 +55,6 @@
     "bedrooms": 4,
     "minimum_nights": 4,
     "amenities": "pool, AC, Heater, Theatre, Sauna",
-    "images": ["image1_home.jpg","image1_room.jpg","image1_bath.jpg","image1_pool.jpg"]
+    "images": ["image4_1.png","image4_2.png","image4_3.png","image4_4.png"]
   }
 ]
