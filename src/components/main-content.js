@@ -3,9 +3,9 @@ import Card from './card';
 
 const MainContent = (props) => {
   return (
-    <div class="row">
-        {props.listings.map((listing) => (
-            <Card listing={listing}></Card>
+    <div className="row">
+        {props.listings.map((listing,index) => (
+            <Card listing={listing} cardno={index+1} key={index}></Card>
         ))}
     </div>
   )

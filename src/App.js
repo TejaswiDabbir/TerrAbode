@@ -14,8 +14,8 @@ function App() {
   }, []);
 
   return (
-    <div class="col-lg-12">
-      <div class="row">
+    <div className="col-lg-12">
+      <div className="row">
         <MainContent listings= {listings}></MainContent>
       </div>
     </div>
