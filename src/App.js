@@ -1,16 +1,25 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import MainContent from './components/main-content';
+import SingleListing from './components/single-listing';
 
 function App() {
 
   const [listings, setListings] = useState([]);
   const [filterText, setFilterText] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [listView, setListView] = useState(true);
+  const [listingInfo, setListingInfo] = useState([]);
+  const [listingID, setListingID] = useState(-1);
 
   useEffect(() => {
+    setLoading(true);
     fetch('properties.json')
       .then(res => res.json())
-      .then(data => setListings(data))
+      .then((data) => {
+        setListings(data)
+        setLoading(false)
+      })
       .catch(err => console.log(err));
   }, []);
 
@@ -18,16 +27,40 @@ function App() {
     return listings.filter(listing => listing.city_name.toLowerCase().indexOf(filterText.toLowerCase()) !== -1 || listing.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1);
   }
 
+  const singleListingView = (idx) => {
+    setLoading(true);
+    setListingID(idx);
+    setListView(false);
+  }
+
+  const mainContentView = () => {
+    setListView(true);
+  }
+
+  useEffect(() => {
+    if (!listView) {
+      setListingInfo(listings.filter(v => v.id === listingID))
+      setLoading(false)
+    }
+  }, [listView])
+
   return (
     <div className="col-lg-12">
-      <SearchBar
+      {listView ? <SearchBar
         filterText={filterText}
         onFilterTextChange={setFilterText}
- />
-        <div class="row">
-          <MainContent listings={searchListing(listings)}></MainContent>
-        </div>
+      /> : <></>}
+      <div className="row">
+        {loading ?
+          <div>Loading data </div> :
+          (
+            listView ?
+              <MainContent listings={searchListing(listings)} singleListingView={singleListingView}></MainContent> :
+              <SingleListing listing={listingInfo[0]} mainContentView={mainContentView}></SingleListing>
+          )
+        }
       </div>
+    </div>
   )
 }
 function SearchBar({
@@ -43,8 +76,8 @@ function SearchBar({
       <div className="col-lg-10 header">
         <form className="search-header">
           <div className="input-group">
-            <input type="text" className="form-control" value={filterText} placeholder="Find your Abode..." 
-            onChange={(e) => onFilterTextChange(e.target.value)} />
+            <input type="text" className="form-control" value={filterText} placeholder="Find your Abode..."
+              onChange={(e) => onFilterTextChange(e.target.value)} />
           </div>
         </form>
       </div>
