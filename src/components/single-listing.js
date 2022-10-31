@@ -28,24 +28,25 @@ const SingleListing = (props) => {
                         </div>
                         <div className='col-lg-4'>
                             <img src={props.listing.images[1]} alt="..."></img>
-                            <strong>
-                                ${props.listing.nightly_fee}/night <br />
-                                ${props.listing.cleaning_fee} - cleaning nightly fee <br />
-                                ${props.listing.service_fee} - service fee <br />
-                            </strong>
+                            <p></p>
+                            <img src={props.listing.images[2]} alt="..."></img>
                         </div>
                     </div>
                     <br />
                     <div className='d-flex flex-row'>
-                        <div className='col-lg-4'>
-                            <img src={props.listing.images[2]} alt="..."></img>
+                        <div className='col-lg-6'>
+                            <p className="card-description" style={{ fontSize: '28px' }}><strong>{props.listing.description}</strong></p>
                             <strong>
-                                {props.listing.bedrooms} bedrooms <br />
-                                {props.listing.minimum_nights} minimum nights <br />
-                                {props.listing.amenities}
+                                ${props.listing.nightly_fee}/night <br />
+                                ${props.listing.cleaning_fee} - Cleaning Fee <br />
+                                ${props.listing.service_fee} - Service Fee <br />
+                                {props.listing.bedrooms} Bedrooms <br />
+                                {props.listing.minimum_nights} Minimum Nights <br />
+                                Amenities: {props.listing.amenities}<br/>
+                                Reviews: {props.listing.reviews}
                             </strong>
                         </div>
-                        <div className='col-lg-8'>
+                        <div className='col-lg-6'>
                             <img src={props.listing.images[3]} alt="..."></img>
                         </div>
                     </div>
